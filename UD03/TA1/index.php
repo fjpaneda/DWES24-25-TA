@@ -1,13 +1,14 @@
 <?php
     if(isset($_COOKIE['visitas'])){
         setcookie("visitas",$_COOKIE['visitas']+1, time()+60*60*24*2);
-        if(isset($_POST['borrar'])){
+        if(isset($_GET['borrar'])){
             setcookie("visitas",$_COOKIE['visitas'], time()-60);
         }     
     }
     else {
         setcookie("visitas",01, time()+60*60*24*2);
     }
+    
  ?>
 
 <!DOCTYPE html>
@@ -24,7 +25,7 @@
                 echo ("Número de visitas: ".$_COOKIE['visitas']);}
         ?>
     </p>
-    <form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">
+    <form action="index.php" method="get">
         <button name="borrar">Eliminar cookies</button>
     </form>
 </body>
